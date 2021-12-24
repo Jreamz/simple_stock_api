@@ -1,0 +1,24 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+
+{% block content %}
+    <div class="container">
+      <form class="form-signin" method="POST" action="{{ url_for('login') }}">
+        <h2 class="form-signin-heading">SIMPLE STOCK API</h2>
+        <br>
+        <br>
+        {{ form.csrf_token }}
+        {{ wtf.form_field(form.user_email) }}
+        {{ wtf.form_field(form.user_password) }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+    </div>
+{% endblock %}
